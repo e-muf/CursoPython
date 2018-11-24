@@ -4,7 +4,7 @@ from tkinter import *
 root = Tk()
 root.title("Hola mundo")
 root.resizable(1,1)
-root.iconbitmap('hola.ico')
+root.iconbitmap('@../hola.xbm')
 
 
 frame = Frame(root, width=480, height=320)
