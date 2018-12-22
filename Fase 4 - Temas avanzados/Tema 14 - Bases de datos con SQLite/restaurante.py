@@ -33,9 +33,23 @@ def agregar_categoria():
 	conexion = sqlite3.connect('restaurante.db')
 	cursor = conexion.cursor()
 
-	cursor.execute('INSERT INTO categoria VALUES (null, "{}")'.format(nombre))
-	conexion.commit()
-	conexion.close()
+	try:
+		cursor.execute('INSERT INTO categoria VALUES (null, "{}")'.format(nombre))
+		print('[+] Se ha agregado la categoría correctamente')
+	except:
+		print('[-] No se ha agregado la categoría')
+	finally:
+		conexion.commit()
+		conexion.close()
+
+def agregar_plato():
+	conexion = sqlite3.connect('restaurante.db')
+	cursor = conexion.cursor()
+
+	try:
+		cursor.execute('SELECT nombre FROM categoria')
+		categorias = cursor.fetchall()
+		
 
 crear_bd()
 
@@ -46,5 +60,6 @@ while True:
 		agregar_categoria()
 			
 	if opcion == 2:
+		print('Hasta luego')
 		break
 
